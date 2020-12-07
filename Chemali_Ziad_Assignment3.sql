@@ -27,7 +27,7 @@ HAVING COUNT(*)>1;
 
 DROP VIEW if EXISTS GENRE_TABLE ;
 CREATE VIEW GENRE_TABLE(CompetitorID,MusicID,Composer,Title,Genre)
-AS (SELECT P.CompetitorID,C.MusicID,C.Title,C.Genre
+AS (SELECT P.CompetitorID,C.MusicID,C.Composer,C.Title,C.Genre
 	FROM Performance AS P,Composition AS C
     WHERE P.MusicID=C.MusicID
    );
@@ -74,13 +74,14 @@ ALTER table Competitor ADD CONSTRAINT age_requirement CHECK(Age>=5 AND Age<=18);
 #Question 13
 UPDATE  Studio SET Name= 'Harmony Studio'
 WHERE Name='Harmony Inc.';
-# Since there is a constrain on foreing key in Teacher table then when
-# Studio table is updaed the foriegn key is updated aswell. All other tables remain the same since only Teacher
-# table is refrencing the Studio table
+# Since there is a constrain on the foreign key in Teacher table then when
+# Studio table is updated the foreign key is updated as well. All other tables remain the same since only Teacher
+# table is referencing the Studio table
 
 #Question 14
-#Performace table refrences the Composition table MusicID; so we cant delete the parent before the child tables
+#Performace table references the Composition table MusicID; so we can't delete the parent before the child tables
 #So you will get an ERROR if you try to delete tuple from Composition first
+
 
 
 #Question 15
